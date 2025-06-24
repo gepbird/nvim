@@ -23,6 +23,7 @@ let
   });
 in
 {
+  # TODO: unused
   nixpkgs.overlays = [
     self.inputs.neovim-nightly.overlays.default
 
@@ -53,10 +54,12 @@ in
   ];
 
   hm-gep.programs.neovim = {
+    # TODO: unused
     enable = true;
     defaultEditor = true;
     extraLuaConfig = "require 'gep'";
     package = pkgs.neovim;
+
     plugins = with pkgs.vimPlugins; [
       nvim-web-devicons
 
@@ -118,21 +121,26 @@ in
     ];
   };
 
+  # TODO: unused
   hm-gep.xdg.configFile."nvim/lua".source = self.lib.mkDotfilesSymlink config "modules/nvim/lua";
   hm-gep.xdg.configFile."nvim/after".source = self.lib.mkDotfilesSymlink config "modules/nvim/after";
 
+  # TODO: unused
   hm-gep.xdg.mimeApps.defaultApplications = {
     "text/plain" = [ "nvim.desktop" ];
   };
 
+  # TODO: unused
   hm-gep.home.shellAliases = {
     v = finalPackage;
   };
 
+  # TODO: unused
   hm-gep.home.sessionVariables = {
     MANPAGER = "${finalPackage} +Man!";
   };
 
+  # TODO: unused
   hm-gep.home.packages = with pkgs; [
     lua-language-server
   ];
