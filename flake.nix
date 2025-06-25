@@ -18,6 +18,7 @@
       inputs.git-hooks.follows = "";
       inputs.treefmt-nix.follows = "";
     };
+    # use newer main branch, see https://github.com/nvim-treesitter/nvim-treesitter-textobjects/pull/692
     nvim-treesitter-textobjects = {
       url = "github:nvim-treesitter/nvim-treesitter-textobjects/main";
       flake = false;
