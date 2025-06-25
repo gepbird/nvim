@@ -89,7 +89,9 @@
           "nixpkgs"
         ],
         "nuschtosSearch": [],
-        "systems": "systems"
+        "systems": [
+          "systems"
+        ]
       },
       "locked": {
         "lastModified": 1750788551,
@@ -128,7 +130,8 @@
         "neovim-nightly": "neovim-nightly",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
-        "nvim-treesitter-textobjects": "nvim-treesitter-textobjects"
+        "nvim-treesitter-textobjects": "nvim-treesitter-textobjects",
+        "systems": "systems"
       }
     },
     "systems": {

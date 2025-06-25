@@ -8,6 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
       inputs.nuschtosSearch.follows = "";
+      inputs.systems.follows = "systems";
     };
     neovim-nightly = {
       url = "github:nix-community/neovim-nightly-overlay";
@@ -27,6 +28,9 @@
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+    systems = {
+      url = "github:nix-systems/default";
     };
   };
 
