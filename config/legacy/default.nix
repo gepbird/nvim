@@ -1,8 +1,9 @@
 {
-  inputs,
+  neovim-nightly,
+  nvim-treesitter-textobjects,
   pkgs,
   ...
-}:
+}@args:
 
 let
   gepPlugin = pkgs.vimUtils.buildVimPlugin {
@@ -46,8 +47,8 @@ in
     remember-nvim
 
     nvim-treesitter.withAllGrammars
-    (nvim-treesitter-textobjects.overrideAttrs {
-      src = inputs.nvim-treesitter-textobjects;
+    (pkgs.vimPlugins.nvim-treesitter-textobjects.overrideAttrs {
+      src = args.nvim-treesitter-textobjects;
     })
     rainbow-delimiters-nvim
     nvim-colorizer-lua
@@ -89,7 +90,7 @@ in
   ];
 
   extraConfigLua = "require 'gep'";
-  package = inputs.neovim-nightly.packages.${pkgs.system}.default;
+  package = neovim-nightly.packages.${pkgs.system}.default;
 
   # TODO: unused
   nixpkgs.overlays = [

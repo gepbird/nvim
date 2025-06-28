@@ -46,23 +46,18 @@
       forSystem = system: rec {
         pkgs = import nixpkgs { inherit system; };
         nixvimLib = nixvim.lib.${system};
-        nixvim' = nixvim.legacyPackages.${system};
+        nixvimPkgs = nixvim.legacyPackages.${system};
         nixvimModule = {
-          inherit system; # or alternatively, set `pkgs`
-          module = import ./config; # import the module directly
-          # You can use `extraSpecialArgs` to pass additional arguments to your module files
-          extraSpecialArgs = {
-            inherit inputs;
-          };
+          module = import ./config;
+          extraSpecialArgs = inputs;
         };
-        nvim = nixvim'.makeNixvimWithModule nixvimModule;
+        nvim = nixvimPkgs.makeNixvimWithModule nixvimModule;
       };
     in
     {
       checks = forAllSystems (
         { nixvimLib, nixvimModule, ... }:
         {
-          # Run `nix flake check .` to verify that your config is not broken
           default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
         }
       );
@@ -70,7 +65,6 @@
       packages = forAllSystems (
         { nvim, ... }:
         {
-          # Lets you run `nix run .` to start nixvim
           default = nvim;
         }
       );
