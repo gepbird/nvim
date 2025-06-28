@@ -1,12 +1,16 @@
-self:
 {
-  config,
+  inputs,
   pkgs,
-  lib,
   ...
 }:
 
 let
+  gepPlugin = pkgs.vimUtils.buildVimPlugin {
+    name = "gep";
+    src = ./.;
+    doCheck = false;
+  };
+
   # https://github.com/nvimdev/lspsaga.nvim/pull/1538 but was reverted
   lspsaga-nvim = pkgs.vimPlugins.lspsaga-nvim.overrideAttrs (o: {
     patches = (o.patches or [ ]) ++ [
@@ -21,6 +25,72 @@ let
   });
 in
 {
+  extraPlugins = with pkgs.vimPlugins; [
+    nvim-web-devicons
+
+    vscode-nvim
+    lualine-nvim
+    lsp-progress-nvim
+    bufferline-nvim
+    nvim-window-picker
+    neo-tree-nvim
+    toggleterm-nvim
+    nvim-bqf
+    undotree
+    vim-bbye
+
+    vim-repeat
+    vim-sandwich
+    comment-nvim
+    nvim-autopairs
+    remember-nvim
+
+    nvim-treesitter.withAllGrammars
+    (nvim-treesitter-textobjects.overrideAttrs {
+      src = inputs.nvim-treesitter-textobjects;
+    })
+    rainbow-delimiters-nvim
+    nvim-colorizer-lua
+
+    telescope-nvim
+    telescope-ui-select-nvim
+    telescope-fzf-native-nvim
+
+    vim-fugitive
+    vim-rhubarb
+    gitsigns-nvim
+
+    blink-cmp
+    blink-cmp-copilot
+    copilot-lua
+    friendly-snippets
+
+    nvim-lspconfig
+    guard-nvim
+    guard-collection
+    lspsaga-nvim
+    trouble-nvim
+
+    nvim-dap
+    nvim-dap-ui
+    nvim-dap-virtual-text
+    telescope-dap-nvim
+
+    rustaceanvim
+    flutter-tools-nvim
+    markdown-preview-nvim
+    omnisharp-extended-lsp-nvim
+    vimtex
+    typst-preview-nvim
+    GPTModels-nvim
+
+    # lua config
+    gepPlugin
+  ];
+
+  extraConfigLua = "require 'gep'";
+  package = inputs.neovim-nightly.packages.${pkgs.system}.default;
+
   # TODO: unused
   nixpkgs.overlays = [
     # DISABLED: try to reproduce the slowdown without this patch
@@ -48,72 +118,4 @@ in
     #  });
     #})
   ];
-
-  hm-gep.programs.neovim = {
-    # TODO: unused
-    enable = true;
-    defaultEditor = true;
-    extraLuaConfig = "require 'gep'";
-    package = pkgs.neovim;
-
-    plugins = with pkgs.vimPlugins; [
-      nvim-web-devicons
-
-      vscode-nvim
-      lualine-nvim
-      lsp-progress-nvim
-      bufferline-nvim
-      nvim-window-picker
-      neo-tree-nvim
-      toggleterm-nvim
-      nvim-bqf
-      undotree
-      vim-bbye
-
-      vim-repeat
-      vim-sandwich
-      comment-nvim
-      nvim-autopairs
-      remember-nvim
-
-      nvim-treesitter.withAllGrammars
-      (nvim-treesitter-textobjects.overrideAttrs {
-        src = self.inputs.nvim-treesitter-textobjects;
-      })
-      rainbow-delimiters-nvim
-      nvim-colorizer-lua
-
-      telescope-nvim
-      telescope-ui-select-nvim
-      telescope-fzf-native-nvim
-
-      vim-fugitive
-      vim-rhubarb
-      gitsigns-nvim
-
-      blink-cmp
-      blink-cmp-copilot
-      copilot-lua
-      friendly-snippets
-
-      nvim-lspconfig
-      guard-nvim
-      guard-collection
-      lspsaga-nvim
-      trouble-nvim
-
-      nvim-dap
-      nvim-dap-ui
-      nvim-dap-virtual-text
-      telescope-dap-nvim
-
-      rustaceanvim
-      flutter-tools-nvim
-      markdown-preview-nvim
-      omnisharp-extended-lsp-nvim
-      vimtex
-      typst-preview-nvim
-      GPTModels-nvim
-    ];
-  };
 }
