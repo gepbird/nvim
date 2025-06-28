@@ -7,8 +7,6 @@ self:
 }:
 
 let
-  finalPackage = lib.getExe config.hm-gep.programs.neovim.finalPackage;
-
   # https://github.com/nvimdev/lspsaga.nvim/pull/1538 but was reverted
   lspsaga-nvim = pkgs.vimPlugins.lspsaga-nvim.overrideAttrs (o: {
     patches = (o.patches or [ ]) ++ [
@@ -25,8 +23,6 @@ in
 {
   # TODO: unused
   nixpkgs.overlays = [
-    self.inputs.neovim-nightly.overlays.default
-
     # DISABLED: try to reproduce the slowdown without this patch
     # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/issues/461
     # https://github.com/tree-sitter/tree-sitter/issues/973
@@ -120,28 +116,4 @@ in
       GPTModels-nvim
     ];
   };
-
-  # TODO: unused
-  hm-gep.xdg.configFile."nvim/lua".source = self.lib.mkDotfilesSymlink config "modules/nvim/lua";
-  hm-gep.xdg.configFile."nvim/after".source = self.lib.mkDotfilesSymlink config "modules/nvim/after";
-
-  # TODO: unused
-  hm-gep.xdg.mimeApps.defaultApplications = {
-    "text/plain" = [ "nvim.desktop" ];
-  };
-
-  # TODO: unused
-  hm-gep.home.shellAliases = {
-    v = finalPackage;
-  };
-
-  # TODO: unused
-  hm-gep.home.sessionVariables = {
-    MANPAGER = "${finalPackage} +Man!";
-  };
-
-  # TODO: unused
-  hm-gep.home.packages = with pkgs; [
-    lua-language-server
-  ];
 }
