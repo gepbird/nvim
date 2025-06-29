@@ -52,6 +52,23 @@
           extraSpecialArgs = inputs;
         };
         nvim = nixvimPkgs.makeNixvimWithModule nixvimModule;
+
+        devPkgs = import nixpkgs {
+          inherit system;
+          overlays = [
+            (final: prev: {
+              wrapNeovimUnstable =
+                neovim-unwrapped: wrapper:
+                (prev.wrapNeovimUnstable neovim-unwrapped wrapper).overrideAttrs (old: {
+                  dontFixup = true;
+                });
+            })
+          ];
+        };
+        devNixvimModule = nixvimModule // {
+          pkgs = devPkgs;
+        };
+        devNvim = nixvimPkgs.makeNixvimWithModule devNixvimModule;
       };
     in
     {
@@ -63,9 +80,10 @@
       );
 
       packages = forAllSystems (
-        { nvim, ... }:
+        { nvim, devNvim, ... }:
         {
           default = nvim;
+          dev = devNvim;
         }
       );
     };
