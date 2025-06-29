@@ -68,7 +68,9 @@
         devNixvimModule = nixvimModule // {
           pkgs = devPkgs;
         };
-        devNvim = nixvimPkgs.makeNixvimWithModule devNixvimModule;
+        devNvim = (nixvimPkgs.makeNixvimWithModule devNixvimModule).extend {
+          enableMan = false;
+        };
       };
     in
     {
