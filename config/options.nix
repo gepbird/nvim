@@ -19,6 +19,7 @@
     ];
     list = true;
     listchars = "space:·,tab:  󰌒,eol:󰌑";
+    messagesopt = "wait:0,history:10000";
     number = true;
     redrawtime = 200;
     scrolloff = 8;
