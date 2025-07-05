@@ -70,6 +70,7 @@
         };
         devNvim = (nixvimPkgs.makeNixvimWithModule devNixvimModule).extend {
           enableMan = false;
+          enablePrintInit = false;
         };
       };
     in
