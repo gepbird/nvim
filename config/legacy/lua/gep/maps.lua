@@ -88,7 +88,7 @@ require 'gep.utils'.register_maps {
   { 'n',   '<space>w',     ':w ++p<cr>' },
   { 'n',   '<space>W',     ':wq ++p<cr>' },
 
-  { 'n',   '<space><s-m>', ':messages<cr>' },
+  { 'n',   '<space><s-m>', ':set messagesopt=hit-enter,history:10000<cr>:messages<cr>' },
   { 'n',   '<space>n',     function() print(vim.fn.expand '%') end },
   { 'n',   '<space><s-n>', function() print(vim.bo.filetype) end },
   { 'n',   '<a-q>',        'q' },
