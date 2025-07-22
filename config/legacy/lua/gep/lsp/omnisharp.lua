@@ -1,13 +1,23 @@
 local omnisharp = require 'omnisharp_extended'
 local ivy = require 'telescope.themes'.get_ivy()
 require 'gep.utils'.register_maps {
-  { 'n', '<space>-', function() omnisharp.telescope_lsp_references(ivy) end, filetype = 'cs' },
-  { 'n', '<space>.', function() omnisharp.telescope_lsp_definition(ivy) end, filetype = 'cs' },
+  { 'n', '<space>-', function() omnisharp.telescope_lsp_references(ivy) end,      filetype = 'cs' },
+  { 'n', '<space>.', function() omnisharp.telescope_lsp_definition(ivy) end,      filetype = 'cs' },
   { 'n', '<space>:', function() omnisharp.telescope_lsp_type_definition(ivy) end, filetype = 'cs' },
 }
 
 -- see ~/.omnisharp/omnisharp.json
 return {
+  --cmd = {
+  --  '/nix/store/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-omnisharp-roslyn-x.xx.xx/bin/OmniSharp',
+  --  '-z',
+  --  '--hostPID',
+  --  tostring(vim.fn.gepid()),
+  --  'DotNet:enablePackageRestore=false',
+  --  '--encoding',
+  --  'utf-8',
+  --  '--languageserver'
+  --},
   analyze_open_documents_only = true,
   enable_editorconfig_support = true,
   enable_import_completion = true,
