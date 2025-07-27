@@ -54,13 +54,22 @@ end
 toggle_inlay_hints()
 
 local telescope = require 'telescope.builtin'
-local ivy = require 'telescope.themes'.get_ivy()
+
+-- keep this a function, because it should be computed each time to not keep state
+-- functions like lsp_defnitions write some state to their parameters
+-- calling those functions with outdated state causes these errors:
+-- - Cursor position outside buffer
+-- - Invalid window ID
+-- - jumping to a previous location
+-- - [telescope.builtin.lsp_*]: no client attached
+local get_ivy = require 'telescope.themes'.get_ivy
+
 utils.register_maps {
   { 'n', '<space>ls', ':checkhealth vim.lsp<cr>' },
   { 'n', '<space>lh', toggle_inlay_hints },
-  { 'n', '<space>-',  function() telescope.lsp_references(ivy) end },
-  { 'n', '<space>.',  function() telescope.lsp_definitions(ivy) end },
-  { 'n', '<space>:',  function() telescope.lsp_type_definitions(ivy) end },
+  { 'n', '<space>-',  function() telescope.lsp_references(get_ivy()) end },
+  { 'n', '<space>.',  function() telescope.lsp_definitions(get_ivy()) end },
+  { 'n', '<space>:',  function() telescope.lsp_type_definitions(get_ivy()) end },
   { 'n', '<space>f', function()
     vim.lsp.buf.format { async = false };
     vim.cmd ':w'
