@@ -1,10 +1,9 @@
 return {
-  filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
+  --cmd = {
+  --  '/nix/store/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-emmet-language-server-x.x.x/bin/emmet-language-server',
+  --  '--stdio',
+  --},
   init_options = {
-    html = {
-      options = {
-        -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
-      },
-    },
+    -- https://github.com/olrtg/emmet-language-server?tab=readme-ov-file#neovim
   },
 }
