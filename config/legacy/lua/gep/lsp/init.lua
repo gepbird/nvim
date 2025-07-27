@@ -24,7 +24,7 @@ local servers = {
   'clangd',
   'cssls',
   'stylelint_lsp',
-  'emmet_ls',
+  'emmet_language_server',
   'eslint',
   'ts_ls',
   'html',
