@@ -12,7 +12,7 @@ return {
   --  '/nix/store/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-omnisharp-roslyn-x.xx.xx/bin/OmniSharp',
   --  '-z',
   --  '--hostPID',
-  --  tostring(vim.fn.gepid()),
+  --  tostring(vim.fn.getpid()),
   --  'DotNet:enablePackageRestore=false',
   --  '--encoding',
   --  'utf-8',
