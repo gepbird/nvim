@@ -5,5 +5,6 @@
     ./autocommands.nix
     ./csvview.nix
     ./lsp.nix
+    ./remember.nix
   ];
 }

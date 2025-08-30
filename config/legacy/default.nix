@@ -44,7 +44,6 @@ in
     vim-sandwich
     comment-nvim
     nvim-autopairs
-    remember-nvim
 
     nvim-treesitter.withAllGrammars
     (pkgs.vimPlugins.nvim-treesitter-textobjects.overrideAttrs {
