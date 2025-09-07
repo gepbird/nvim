@@ -56,6 +56,11 @@
           enableMan = false;
           enablePrintInit = false;
         };
+        devShell = pkgs.mkShell {
+          packages = with pkgs; [
+            inotify-tools
+          ];
+        };
       };
     in
     {
@@ -71,6 +76,13 @@
         {
           default = nvim;
           dev = devNvim;
+        }
+      );
+
+      devShells = forAllSystems (
+        { devShell, ... }:
+        {
+          default = devShell;
         }
       );
     };
