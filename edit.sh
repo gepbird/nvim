@@ -31,6 +31,16 @@ try_remove_edit_window() {
   fi
 }
 
+init_window() {
+  existing_indices=$(tmux list-windows -t $TARGET_SESSION -F "#{window_index}")
+  for i in $(seq 0 99); do
+    if ! echo "$existing_indices" | grep -q "^$i$"; then
+      tmux new-window -t "$TARGET_SESSION:$i" -n "$TARGET_WINDOW_NAME"
+      break
+    fi
+  done
+}
+
 cleanup() {
   try_remove_edit_window
   exit 0
@@ -58,7 +68,7 @@ auto_restart_testing_nvim() {
 nix_init
 
 try_remove_edit_window
-tmux new-window -t "$TARGET_SESSION" -n "$TARGET_WINDOW_NAME"
+init_window
 
 trap cleanup EXIT INT
 
