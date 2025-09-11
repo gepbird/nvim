@@ -1,4 +1,3 @@
-require 'gep.vscode'
 require 'gep.lualine'
 require 'gep.bufferline'
 require 'gep.window-picker'

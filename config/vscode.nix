@@ -1,0 +1,5 @@
+{
+  colorschemes.vscode = {
+    enable = true;
+  };
+}

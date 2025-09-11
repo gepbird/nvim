@@ -29,7 +29,6 @@ in
   extraPlugins = with pkgs.vimPlugins; [
     nvim-web-devicons
 
-    vscode-nvim
     lualine-nvim
     lsp-progress-nvim
     bufferline-nvim

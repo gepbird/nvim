@@ -6,5 +6,6 @@
     ./csvview.nix
     ./lsp.nix
     ./remember.nix
+    ./vscode.nix
   ];
 }
