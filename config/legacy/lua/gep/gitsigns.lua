@@ -18,7 +18,9 @@ require 'gep.utils'.register_maps {
   { 'n',  '<space>g<s-r>', gs.reset_buffer },
   { 'n',  '<space>gp',     gs.preview_hunk_inline },
   { 'n',  '<space>g<s-p>', gs.preview_hunk },
+  { 'ox', 'ih',            gs.select_hunk },
+  { 'ox', 'ah',            gs.select_hunk },
   { 'n',  '<space>gb',     function() gs.blame_line { full = true } end },
-  { 'n',  '<space>gB',     gs.blame },
+  { 'n',  '<space>g<s-b>', gs.blame },
   { 'n',  '<space>gd',     gs.diffthis },
 }
