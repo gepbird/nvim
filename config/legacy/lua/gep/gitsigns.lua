@@ -5,9 +5,6 @@ gs.setup {
   signcolumn = false,
   numhl = true,
   attach_to_untracked = true,
-  preview_config = {
-    border = 'rounded',
-  },
 }
 
 require 'gep.utils'.register_maps {

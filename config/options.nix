@@ -37,6 +37,7 @@
     tabstop = 2;
     ttimeoutlen = 5; # process <esc> quicker
     undofile = true;
+    winborder = "rounded";
 
     # this breaks indentation for example here:
     /*
