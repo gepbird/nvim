@@ -10,9 +10,11 @@ gs.setup {
 require 'gep.utils'.register_maps {
   { 'n',  '<space>gj',     gs.next_hunk },
   { 'n',  '<space>gk',     gs.prev_hunk },
-  { 'nx', '<space>gs',     gs.stage_hunk },
+  { 'n',  '<space>gs',     gs.stage_hunk },
+  { 'x',  '<space>gs',     function() gs.stage_hunk { vim.fn.line '.', vim.fn.line 'v' } end },
   { 'n',  '<space>g<s-s>', gs.stage_buffer },
-  { 'nx', '<space>gr',     gs.reset_hunk },
+  { 'n',  '<space>gr',     gs.reset_hunk },
+  { 'x',  '<space>gr',     function() gs.reset_hunk { vim.fn.line '.', vim.fn.line 'v' } end },
   { 'n',  '<space>g<s-r>', gs.reset_buffer },
   { 'n',  '<space>gu',     gs.undo_stage_hunk },
   { 'n',  '<space>gt',     gs.toggle_deleted },
