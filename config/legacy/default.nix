@@ -56,7 +56,6 @@ in
 
     vim-fugitive
     vim-rhubarb
-    gitsigns-nvim
 
     blink-cmp
     blink-cmp-copilot
