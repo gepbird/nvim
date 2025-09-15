@@ -7,6 +7,7 @@
     ./lsp.nix
     ./gitsigns.nix
     ./remember.nix
+    ./undotree.nix
     ./vscode.nix
   ];
 }
