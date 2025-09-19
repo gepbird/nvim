@@ -1,3 +1,5 @@
+# reinstall command:
+# `nix profile remove $(nix profile list --json | jq '.elements.nvim.storePaths[0]' --raw-output); nix profile install`
 {
   description = "A nixvim configuration";
 
