@@ -19,8 +19,19 @@ done
 
 nix_init() {
   if [[ $NO_NIX -ne 1 ]]; then
-    nom build .#dev -o result-edit
-    nix eval .#dev.config.content --raw > edit.lua
+    evaled=$(nix eval --json --impure --expr '
+      let
+        flake = builtins.getFlake (toString ./.);
+        system = builtins.currentSystem;
+        dev = flake.packages.${system}.dev;
+      in
+      {
+        drv = dev.drvPath;
+        config = dev.config.content;
+      }
+    ')
+    nix-build $(echo $evaled | jq --raw-output '.drv') -o result-edit
+    echo $evaled | jq --raw-output '.config' | sed 's/\\n/\n/g' > edit.lua
   fi
 }
 
