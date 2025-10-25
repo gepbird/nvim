@@ -1,4 +1,9 @@
 {
+  lib,
+  ...
+}:
+
+{
   plugins.gitsigns = {
     enable = true;
     settings = {
@@ -11,9 +16,7 @@
   keymaps =
     let
       wrapLuaFunction = action: "function() ${action} end";
-      gs = action: {
-        __raw = wrapLuaFunction "require('gitsigns').${action}";
-      };
+      gs = action: lib.nixvim.mkRaw (wrapLuaFunction "require('gitsigns').${action}");
     in
     [
       {
