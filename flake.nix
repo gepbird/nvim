@@ -54,6 +54,11 @@
           extraSpecialArgs = inputs;
         };
         nvim = nixvimPkgs.makeNixvimWithModule nixvimModule;
+        nvimWithOwnPkgs =
+          pkgs:
+          (nixvimPkgs.makeNixvimWithModule nixvimModule).extend {
+            nixpkgs.pkgs = pkgs;
+          };
         devNvim = (nixvimPkgs.makeNixvimWithModule nixvimModule).extend {
           enableMan = false;
           enablePrintInit = false;
@@ -80,6 +85,10 @@
           dev = devNvim;
         }
       );
+
+      overlays.default = final: prev: {
+        nvim-gep = (forSystem prev.system).nvimWithOwnPkgs prev;
+      };
 
       devShells = forAllSystems (
         { devShell, ... }:
