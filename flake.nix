@@ -16,10 +16,6 @@
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
-      inputs.hercules-ci-effects.follows = "";
-      inputs.flake-compat.follows = "";
-      inputs.git-hooks.follows = "";
-      inputs.treefmt-nix.follows = "";
     };
     # use newer main branch, see https://github.com/nvim-treesitter/nvim-treesitter-textobjects/pull/692
     nvim-treesitter-textobjects = {
