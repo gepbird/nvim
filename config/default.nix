@@ -9,5 +9,6 @@
     ./remember.nix
     ./undotree.nix
     ./vscode.nix
+    ./codecompanion.nix
   ];
 }
