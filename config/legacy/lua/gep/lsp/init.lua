@@ -29,7 +29,6 @@ local servers = {
   'ts_ls',
   'html',
   'phpactor',
-  'nixd',
   'texlab',
   'tinymist',
 }
