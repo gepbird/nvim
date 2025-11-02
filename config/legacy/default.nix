@@ -39,7 +39,6 @@ in
     undotree
     vim-bbye
 
-    vim-repeat
     vim-sandwich
     comment-nvim
     nvim-autopairs

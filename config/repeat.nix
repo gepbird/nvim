@@ -1,0 +1,3 @@
+{
+  plugins.repeat.enable = true;
+}

@@ -10,5 +10,6 @@
     ./undotree.nix
     ./vscode.nix
     ./codecompanion.nix
+    ./repeat.nix
   ];
 }
