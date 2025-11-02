@@ -28,14 +28,10 @@ local servers = {
   'eslint',
   'ts_ls',
   'html',
-  'jsonls',
   'phpactor',
   'nixd',
   'texlab',
   'tinymist',
-  'lemminx',
-  'taplo',
-  'yamlls',
 }
 
 for _, server in ipairs(servers) do
