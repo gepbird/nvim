@@ -67,6 +67,7 @@
       };
     in
     {
+      inherit inputs;
       checks = forAllSystems (
         { nixvimLib, nixvimModule, ... }:
         {
