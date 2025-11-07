@@ -5,7 +5,12 @@
       lemminx.enable = true;
       taplo.enable = true;
       yamlls.enable = true;
-      nil_ls.enable = true;
+      nil_ls = {
+        enable = true;
+        config.settings.nil = {
+          nix.flake.autoArchive = true;
+        };
+      };
     };
   };
 
