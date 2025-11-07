@@ -78,7 +78,6 @@ in
     omnisharp-extended-lsp-nvim
     vimtex
     typst-preview-nvim
-    GPTModels-nvim
 
     # lua config
     gepPlugin

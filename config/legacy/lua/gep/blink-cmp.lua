@@ -54,8 +54,4 @@ require 'blink-cmp'.setup {
       },
     },
   },
-  enabled = function()
-    -- completion crashes in gptmodels-nvim window, disable it
-    return vim.bo.buftype ~= 'nofile'
-  end,
 }
