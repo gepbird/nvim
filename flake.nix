@@ -83,7 +83,7 @@
       );
 
       overlays.default = final: prev: {
-        nvim-gep = (forSystem prev.system).nvimWithOwnPkgs prev;
+        nvim-gep = (forSystem prev.stdenv.hostPlatform.system).nvimWithOwnPkgs prev;
       };
 
       devShells = forAllSystems (
