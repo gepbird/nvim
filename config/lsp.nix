@@ -1,9 +1,13 @@
 {
   lsp = {
     servers = {
+      cssls.enable = true;
+      emmet_language_server.enable = true;
+      html.enable = true;
       jsonls.enable = true;
       lemminx.enable = true;
       taplo.enable = true;
+      tinymist.enable = true;
       yamlls.enable = true;
       nil_ls = {
         enable = true;

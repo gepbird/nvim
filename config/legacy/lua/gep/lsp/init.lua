@@ -22,15 +22,11 @@ local servers = {
   'pyright',
   'omnisharp',
   'clangd',
-  'cssls',
   'stylelint_lsp',
-  'emmet_language_server',
   'eslint',
   'ts_ls',
-  'html',
   'phpactor',
   'texlab',
-  'tinymist',
 }
 
 for _, server in ipairs(servers) do
