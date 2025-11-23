@@ -11,5 +11,6 @@
     ./vscode.nix
     ./codecompanion.nix
     ./repeat.nix
+    ./typst-preview.nix
   ];
 }

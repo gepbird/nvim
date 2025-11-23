@@ -77,7 +77,6 @@ in
     markdown-preview-nvim
     omnisharp-extended-lsp-nvim
     vimtex
-    typst-preview-nvim
 
     # lua config
     gepPlugin
