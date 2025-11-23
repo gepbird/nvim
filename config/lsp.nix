@@ -7,8 +7,11 @@
       jsonls.enable = true;
       lemminx.enable = true;
       taplo.enable = true;
-      tinymist.enable = true;
       yamlls.enable = true;
+      tinymist = {
+        enable = true;
+        config.settings.formatterMode = "typstyle";
+      };
       nil_ls = {
         enable = true;
         config.settings.nil = {
