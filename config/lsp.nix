@@ -8,6 +8,7 @@
       lemminx.enable = true;
       taplo.enable = true;
       yamlls.enable = true;
+      elixirls.enable = true;
       tinymist = {
         enable = true;
         config.settings.formatterMode = "typstyle";
@@ -18,13 +19,6 @@
           nix.flake.autoArchive = true;
         };
       };
-    };
-  };
-
-  plugins.lsp = {
-    enable = true;
-    servers = {
-      elixirls.enable = true;
     };
   };
 }
