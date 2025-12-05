@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   lsp = {
     servers = {
@@ -9,6 +10,7 @@
       taplo.enable = true;
       yamlls.enable = true;
       elixirls.enable = true;
+      bashls.enable = true;
       tinymist = {
         enable = true;
         config.settings.formatterMode = "typstyle";
@@ -21,4 +23,8 @@
       };
     };
   };
+
+  extraPackages = with pkgs; [
+    shfmt
+  ];
 }
