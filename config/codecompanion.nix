@@ -7,6 +7,11 @@
   plugins.codecompanion = {
     enable = true;
     settings = {
+      # TODO: remove after merged
+      # breaking changes are coming soon that I'm fine with:
+      # https://github.com/olimorris/codecompanion.nvim/pull/2439
+      ignore_warnings = true;
+
       opts.log_level = "TRACE";
       strategies = {
         chat = {
