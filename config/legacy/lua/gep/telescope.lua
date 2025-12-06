@@ -87,23 +87,23 @@ local glob_pattern = '!.git'
 local find_command = { 'rg', '--files', '--glob=' .. glob_pattern, '--color', 'never' }
 
 require 'gep.utils'.register_maps {
-  { 'n', '<space>o', function()
+  { 'n', '<space><space>o', function()
     builtin.find_files { hidden = true, find_command = find_command }
   end },
-  { 'n', '<space><s-o>', function()
+  { 'n', '<space><space><s-o>', function()
     builtin.find_files { hidden = true, no_ignore = true, find_command = find_command }
   end },
-  { 'n', '<space><tab>',  builtin.oldfiles },
-  { 'n', '<space>tg', function()
+  { 'n', '<space><space><tab>',  builtin.oldfiles },
+  { 'n', '<space><space>tg', function()
     builtin.live_grep { glob_pattern = glob_pattern }
   end },
-  { 'n', '<space>t<s-g>', function()
+  { 'n', '<space><space>t<s-g>', function()
     builtin.live_grep { additional_args = { '--no-ignore' } }
   end },
-  { 'n', '<space>tb',     builtin.buffers },
-  { 'n', '<space>tm',     builtin.keymaps },
-  { 'n', '<space>tc',     builtin.commands },
-  { 'n', '<space>th',     builtin.help_tags },
-  { 'n', '<space>t<s-h>', builtin.highlights },
-  { 'n', '<space>tr',     builtin.registers },
+  { 'n', '<space><space>tb',     builtin.buffers },
+  { 'n', '<space><space>tm',     builtin.keymaps },
+  { 'n', '<space><space>tc',     builtin.commands },
+  { 'n', '<space><space>th',     builtin.help_tags },
+  { 'n', '<space><space>t<s-h>', builtin.highlights },
+  { 'n', '<space><space>tr',     builtin.registers },
 }
