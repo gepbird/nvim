@@ -11,6 +11,7 @@
       yamlls.enable = true;
       elixirls.enable = true;
       bashls.enable = true;
+      stylelint_lsp.enable = true;
       tinymist = {
         enable = true;
         config.settings.formatterMode = "typstyle";

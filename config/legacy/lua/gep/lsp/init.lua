@@ -22,7 +22,6 @@ local servers = {
   'pyright',
   'omnisharp',
   'clangd',
-  'stylelint_lsp',
   'eslint',
   'ts_ls',
   'phpactor',
