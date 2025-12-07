@@ -87,7 +87,7 @@
       }
       {
         mode = "n";
-        key = "<space>gb";
+        key = "<space><space>gb";
         action = gs "blame_line { full = true }";
       }
       {

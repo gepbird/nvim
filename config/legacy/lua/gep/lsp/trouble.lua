@@ -4,5 +4,5 @@ trouble.setup {
 }
 
 require 'gep.utils'.register_maps {
-  { 'n', '<space>,', function() trouble.toggle('diagnostics') end },
+  { 'n', '<space><space>,', function() trouble.toggle('diagnostics') end },
 }

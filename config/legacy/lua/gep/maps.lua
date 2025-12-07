@@ -103,7 +103,6 @@ require 'gep.utils'.register_maps {
   { 'n',   ';',            'mz<s-a>;<esc>`z' },
   { 'n',   'w',            'ciw' },
 
-  { 'n',   '<c-r>',        ':edit<cr>' },
   { 'n',   '<c-n>',        ':enew<cr>' },
 
   { 'n',   'gl',           '<s-k>' },

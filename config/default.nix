@@ -12,5 +12,6 @@
     ./codecompanion.nix
     ./repeat.nix
     ./typst-preview.nix
+    ./fzf-lua.nix
   ];
 }
