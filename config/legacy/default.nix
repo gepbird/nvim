@@ -24,6 +24,20 @@ let
       ))
     ];
   });
+
+  # https://github.com/saghen/blink.cmp/issues/1932
+  # may need to pick other patches to actually fix it?
+  blink-cmp = pkgs.vimPlugins.blink-cmp.overrideAttrs (o: {
+    patches = (o.patches or [ ]) ++ [
+      (toString (
+        pkgs.fetchpatch2 {
+          name = "fix-completion-menu-doesnt-get-cleared";
+          url = "https://github.com/saghen/blink.cmp/commit/d7f1c64f704ade8cdd0c9719796cdf0054455fde.patch";
+          hash = "sha256-YqekWDSEEu+Gvts1QxpbzKRFIC8hxn4vpIfy8fKKA88=";
+        }
+      ))
+    ];
+  });
 in
 {
   extraPlugins = with pkgs.vimPlugins; [

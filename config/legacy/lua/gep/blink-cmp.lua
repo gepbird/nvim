@@ -20,11 +20,10 @@ require 'blink-cmp'.setup {
         },
       },
     },
-    -- TODO: enable when fixed: https://github.com/Saghen/blink.cmp/issues/1932
-    --documentation = {
-    --  auto_show = true,
-    --  auto_show_delay_ms = 0,
-    --},
+    documentation = {
+      auto_show = true,
+      auto_show_delay_ms = 0,
+    },
     ghost_text = {
       enabled = true,
     },
