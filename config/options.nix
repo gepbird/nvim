@@ -58,6 +58,6 @@
 
   clipboard = {
     register = "unnamedplus";
-    providers.xsel.enable = true;
+    providers.xclip.enable = true;
   };
 }
