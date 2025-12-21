@@ -18,8 +18,8 @@ let
       (toString (
         pkgs.fetchpatch2 {
           name = "deprecation-warning-fix.patch";
-          url = "https://github.com/nvimdev/lspsaga.nvim/commit/ff6b5be0ca32e7b8b34d9415084aa353dc52277f.patch";
-          hash = "sha256-u6KFa0j+4kpAr3VltVLsY7d/dBxieXoQ/4W1tPo/1T0=";
+          url = "https://github.com/nvimdev/lspsaga.nvim/commit/ff6b5be0ca32e7b8b34d9415084aa353dc52277f.patch?full_index=1";
+          hash = "sha256-29DMHmvU/s7UQlVX9IsNGIUYESAF1YwI6aFAybKx8U8=";
         }
       ))
     ];
@@ -32,8 +32,8 @@ let
       (toString (
         pkgs.fetchpatch2 {
           name = "fix-completion-menu-doesnt-get-cleared";
-          url = "https://github.com/saghen/blink.cmp/commit/d7f1c64f704ade8cdd0c9719796cdf0054455fde.patch";
-          hash = "sha256-YqekWDSEEu+Gvts1QxpbzKRFIC8hxn4vpIfy8fKKA88=";
+          url = "https://github.com/saghen/blink.cmp/commit/d7f1c64f704ade8cdd0c9719796cdf0054455fde.patch?full_index=1";
+          hash = "sha256-thqO98NqGX/wgABwgSC3dqjq+ZMf9sHXn4iWoogM0So=";
         }
       ))
     ];
