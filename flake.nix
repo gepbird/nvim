@@ -5,6 +5,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,20 +42,21 @@
       ];
       forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f (forSystem system));
       forSystem = system: rec {
-        pkgs = import nixpkgs { inherit system; };
+        nixpkgs-patched = nixpkgs-patcher.lib.patchNixpkgs { inherit inputs system; };
+        pkgs = import nixpkgs-patched { inherit system; };
         nixvimLib = nixvim.lib.${system};
         nixvimPkgs = nixvim.legacyPackages.${system};
         nixvimModule = {
           module = import ./config;
           extraSpecialArgs = inputs;
         };
-        nvim = nixvimPkgs.makeNixvimWithModule nixvimModule;
         nvimWithOwnPkgs =
           pkgs:
           (nixvimPkgs.makeNixvimWithModule nixvimModule).extend {
             nixpkgs.pkgs = pkgs;
           };
-        devNvim = (nixvimPkgs.makeNixvimWithModule nixvimModule).extend {
+        nvim = nvimWithOwnPkgs pkgs;
+        devNvim = nvim.extend {
           enableMan = false;
           enablePrintInit = false;
         };

@@ -76,6 +76,21 @@
         "type": "github"
       }
     },
+    "nixpkgs-patcher": {
+      "locked": {
+        "lastModified": 1765447685,
+        "narHash": "sha256-H2C5UgIo3nkB2aHnvePZxOMn1GeWM3RTXLjBUT1z/I0=",
+        "owner": "gepbird",
+        "repo": "nixpkgs-patcher",
+        "rev": "fd95467b7f4452b95a0eb610fc96af572149c7d9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gepbird",
+        "repo": "nixpkgs-patcher",
+        "type": "github"
+      }
+    },
     "nixvim": {
       "inputs": {
         "flake-parts": [
@@ -124,6 +139,7 @@
         "flake-parts": "flake-parts",
         "neovim-nightly": "neovim-nightly",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
         "nvim-treesitter-textobjects": "nvim-treesitter-textobjects",
         "systems": "systems"
