@@ -57,7 +57,7 @@ in
     comment-nvim
     nvim-autopairs
 
-    nvim-treesitter.withAllGrammars
+    nvim-treesitter-legacy.withAllGrammars
     (pkgs.vimPlugins.nvim-treesitter-textobjects.overrideAttrs {
       src = args.nvim-treesitter-textobjects;
     })

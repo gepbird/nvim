@@ -76,6 +76,30 @@
         "type": "github"
       }
     },
+    "nixpkgs-patch-0-nvim-treesitter-main": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-sPgJvHxNy33QQ0zFZF3Nr8QRf8a8HyUNHDhcbXhtEtY=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/470883.diff"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/470883.diff"
+      }
+    },
+    "nixpkgs-patch-nvim-treesitter-legacy": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-9dWW4Sdb7O0yLgMGCgYCAFvQXkD8Srbn+nJix2877JA=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/472119.diff"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/472119.diff"
+      }
+    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1765447685,
@@ -139,6 +163,8 @@
         "flake-parts": "flake-parts",
         "neovim-nightly": "neovim-nightly",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-patch-0-nvim-treesitter-main": "nixpkgs-patch-0-nvim-treesitter-main",
+        "nixpkgs-patch-nvim-treesitter-legacy": "nixpkgs-patch-nvim-treesitter-legacy",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
         "nvim-treesitter-textobjects": "nvim-treesitter-textobjects",
