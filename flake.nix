@@ -6,10 +6,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
-    nixpkgs-patch-0-nvim-treesitter-main = {
-      url = "https://github.com/NixOS/nixpkgs/pull/470883.diff";
-      flake = false;
-    };
     nixpkgs-patch-nvim-treesitter-legacy = {
       url = "https://github.com/NixOS/nixpkgs/pull/472119.diff";
       flake = false;
