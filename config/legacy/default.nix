@@ -71,8 +71,6 @@ in
     vim-rhubarb
 
     blink-cmp
-    blink-cmp-copilot
-    copilot-lua
     friendly-snippets
 
     nvim-lspconfig

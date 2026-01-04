@@ -32,16 +32,10 @@ require 'blink-cmp'.setup {
     enabled = true,
   },
   sources = {
-    default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+    default = { 'lsp', 'path', 'snippets', 'buffer' },
     providers = {
       lsp = {
         fallbacks = {},
-      },
-      copilot = {
-        name = 'copilot',
-        module = 'blink-cmp-copilot',
-        score_offset = 100,
-        async = true,
       },
     },
   },
