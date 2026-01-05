@@ -10,10 +10,10 @@
       opts.log_level = "TRACE";
       strategies = {
         chat = {
-          adapter = "openai";
+          adapter = "gemini";
         };
         inline = {
-          adapter = "openai";
+          adapter = "gemini";
         };
       };
     };
