@@ -1,9 +1,8 @@
 {
   neovim-nightly,
-  nvim-treesitter-textobjects,
   pkgs,
   ...
-}@args:
+}:
 
 let
   gepPlugin = pkgs.vimUtils.buildVimPlugin {
@@ -58,9 +57,8 @@ in
     nvim-autopairs
 
     nvim-treesitter-legacy.withAllGrammars
-    (pkgs.vimPlugins.nvim-treesitter-textobjects.overrideAttrs {
-      src = args.nvim-treesitter-textobjects;
-    })
+    # broken, check after https://github.com/nvim-treesitter/nvim-treesitter-textobjects/issues/772
+    #nvim-treesitter-textobjects
     rainbow-delimiters-nvim
 
     telescope-nvim
