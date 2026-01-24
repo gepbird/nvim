@@ -28,7 +28,14 @@
                   model = {
                     default = "google/gemini-3-pro-preview",
                     choices = {
-                      "google/gemini-3-pro-preview"
+                      "google/gemini-3-pro-preview",
+                      "google/gemini-3-flash-preview",
+                      "openai/gpt-5.2-codex",
+                      "openai/gpt-4o-mini",
+                      "x-ai/grok-code-fast-1",
+                      "anthropic/claude-sonnet-4.5",
+                      "anthropic/claude-opus-4.5",
+                      "minimax/minimax-m2.1",
                     },
                   },
                 },
