@@ -8,7 +8,7 @@
     enable = true;
     settings = {
       opts.log_level = "TRACE";
-      strategies = {
+      interactions = {
         chat = {
           adapter = "gemini";
         };
