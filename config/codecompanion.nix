@@ -8,6 +8,35 @@
     enable = true;
     settings = {
       opts.log_level = "TRACE";
+      adapters = {
+        http = {
+          openrouter = lib.nixvim.mkRaw ''
+            function()
+              return require("codecompanion.adapters").extend("openai", {
+                url = "https://openrouter.ai/api/v1/chat/completions",
+                opts = {
+                  tools = true,
+                },
+                env = {
+                  api_key = "OPENROUTER_API_KEY",
+                },
+                headers = {
+                  ["HTTP-Referer"] = "https://github.com/olimorris/codecompanion.nvim",
+                  ["X-Title"] = "CodeCompanion",
+                },
+                schema = {
+                  model = {
+                    default = "google/gemini-3-pro-preview",
+                    choices = {
+                      "google/gemini-3-pro-preview"
+                    },
+                  },
+                },
+              })
+            end
+          '';
+        };
+      };
       interactions = {
         chat = {
           adapter = "gemini";
