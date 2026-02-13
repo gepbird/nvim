@@ -1,5 +1,17 @@
 {
   "nodes": {
+    "blink-cmp-redraw-patch": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-XI2KrFBiruV7iRyF5m5ut7gdUAFaLAQYdP91oRD/F68=",
+        "type": "file",
+        "url": "https://github.com/saghen/blink.cmp/pull/2394.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/saghen/blink.cmp/pull/2394.patch"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -119,6 +131,7 @@
     },
     "root": {
       "inputs": {
+        "blink-cmp-redraw-patch": "blink-cmp-redraw-patch",
         "flake-parts": "flake-parts",
         "neovim-nightly": "neovim-nightly",
         "nixpkgs": "nixpkgs",

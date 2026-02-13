@@ -17,6 +17,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
+    blink-cmp-redraw-patch = {
+      url = "https://github.com/saghen/blink.cmp/pull/2394.patch";
+      flake = false;
+    };
     # dependencies of the above modules
     flake-parts = {
       url = "github:hercules-ci/flake-parts";

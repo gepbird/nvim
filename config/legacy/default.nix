@@ -1,4 +1,5 @@
 {
+  blink-cmp-redraw-patch,
   neovim-nightly,
   pkgs,
   ...
@@ -35,6 +36,7 @@ let
           hash = "sha256-thqO98NqGX/wgABwgSC3dqjq+ZMf9sHXn4iWoogM0So=";
         }
       ))
+      blink-cmp-redraw-patch
     ];
   });
 in
