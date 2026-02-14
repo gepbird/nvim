@@ -36,6 +36,8 @@
                       "anthropic/claude-sonnet-4.5",
                       "anthropic/claude-opus-4.5",
                       "minimax/minimax-m2.1",
+                      "moonshotai/kimi-k2.5",
+                      "z-ai/glm-5",
                     },
                   },
                 },
