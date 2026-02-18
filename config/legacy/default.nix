@@ -1,5 +1,5 @@
 {
-  blink-cmp-redraw-patch,
+  blink-cmp-redraw-fix,
   neovim-nightly,
   pkgs,
   ...
@@ -28,16 +28,7 @@ let
   # https://github.com/saghen/blink.cmp/issues/1932
   # may need to pick other patches to actually fix it?
   blink-cmp = pkgs.vimPlugins.blink-cmp.overrideAttrs (o: {
-    patches = (o.patches or [ ]) ++ [
-      (toString (
-        pkgs.fetchpatch2 {
-          name = "fix-completion-menu-doesnt-get-cleared";
-          url = "https://github.com/saghen/blink.cmp/commit/d7f1c64f704ade8cdd0c9719796cdf0054455fde.patch?full_index=1";
-          hash = "sha256-thqO98NqGX/wgABwgSC3dqjq+ZMf9sHXn4iWoogM0So=";
-        }
-      ))
-      blink-cmp-redraw-patch
-    ];
+    src = blink-cmp-redraw-fix;
   });
 in
 {

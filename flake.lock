@@ -1,15 +1,20 @@
 {
   "nodes": {
-    "blink-cmp-redraw-patch": {
+    "blink-cmp-redraw-fix": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-+iworCTzxEtKktQUba1Q9XMq9zm5BMBPkhjJZqfDXtw=",
-        "type": "file",
-        "url": "https://github.com/saghen/blink.cmp/pull/2394.patch"
+        "lastModified": 1771282770,
+        "narHash": "sha256-AFzCFi8lounbd6iTxqHK/fGq3JpLETEuyHfBzJjxyLY=",
+        "owner": "saghen",
+        "repo": "blink.cmp",
+        "rev": "4e35fc4acb4e861ac529316a476870f3facc102a",
+        "type": "github"
       },
       "original": {
-        "type": "file",
-        "url": "https://github.com/saghen/blink.cmp/pull/2394.patch"
+        "owner": "saghen",
+        "ref": "fix/visual-artifacts",
+        "repo": "blink.cmp",
+        "type": "github"
       }
     },
     "flake-parts": {
@@ -131,7 +136,7 @@
     },
     "root": {
       "inputs": {
-        "blink-cmp-redraw-patch": "blink-cmp-redraw-patch",
+        "blink-cmp-redraw-fix": "blink-cmp-redraw-fix",
         "flake-parts": "flake-parts",
         "neovim-nightly": "neovim-nightly",
         "nixpkgs": "nixpkgs",
