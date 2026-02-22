@@ -18,7 +18,7 @@
       "@" # >255
     ];
     list = true;
-    listchars = "space:·,tab:  󰌒,eol:󰌑";
+    listchars = "space:·,tab:󰌒  ,eol:󰌑";
     messagesopt = "wait:0,history:10000";
     number = true;
     redrawtime = 200;
