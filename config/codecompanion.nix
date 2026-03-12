@@ -26,7 +26,7 @@
                 },
                 schema = {
                   model = {
-                    default = "google/gemini-3-pro-preview",
+                    default = "moonshotai/kimi-k2.5",
                     choices = {
                       "google/gemini-3-pro-preview",
                       "google/gemini-3-flash-preview",
@@ -48,10 +48,10 @@
       };
       interactions = {
         chat = {
-          adapter = "gemini";
+          adapter = "openrouter";
         };
         inline = {
-          adapter = "gemini";
+          adapter = "openrouter";
         };
       };
     };
