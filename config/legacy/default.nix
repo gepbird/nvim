@@ -1,5 +1,4 @@
 {
-  blink-cmp-redraw-fix,
   neovim-nightly,
   pkgs,
   ...
@@ -23,12 +22,6 @@ let
         }
       ))
     ];
-  });
-
-  # https://github.com/saghen/blink.cmp/issues/1932
-  # may need to pick other patches to actually fix it?
-  blink-cmp = pkgs.vimPlugins.blink-cmp.overrideAttrs (o: {
-    src = blink-cmp-redraw-fix;
   });
 in
 {

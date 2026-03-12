@@ -1,22 +1,5 @@
 {
   "nodes": {
-    "blink-cmp-redraw-fix": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1771543615,
-        "narHash": "sha256-nuwX6M2c7NagOCDABgbWSbKA7HNc2jCd3m3Q2okzhKE=",
-        "owner": "saghen",
-        "repo": "blink.cmp",
-        "rev": "8a85527550c040db41272570f5fb4bae753c839f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "saghen",
-        "ref": "fix/visual-artifacts",
-        "repo": "blink.cmp",
-        "type": "github"
-      }
-    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -136,7 +119,6 @@
     },
     "root": {
       "inputs": {
-        "blink-cmp-redraw-fix": "blink-cmp-redraw-fix",
         "flake-parts": "flake-parts",
         "neovim-nightly": "neovim-nightly",
         "nixpkgs": "nixpkgs",

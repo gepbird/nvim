@@ -17,10 +17,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
-    blink-cmp-redraw-fix = {
-      url = "github:saghen/blink.cmp/fix/visual-artifacts";
-      flake = false;
-    };
     # dependencies of the above modules
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
