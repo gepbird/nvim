@@ -7,7 +7,7 @@
   plugins.codecompanion = {
     enable = true;
     settings = {
-      opts.log_level = "TRACE";
+      opts.log_level = "INFO";
       adapters = {
         http = {
           openrouter = lib.nixvim.mkRaw ''
