@@ -28,8 +28,8 @@
                   model = {
                     default = "moonshotai/kimi-k2.5",
                     choices = {
-                      "google/gemini-3-pro-preview",
-                      "google/gemini-3-flash-preview",
+                      "google/gemini-3.1-pro-preview",
+                      "google/gemini-3.1-flash-lite-preview",
                       "openai/gpt-5.2-codex",
                       "openai/gpt-4o-mini",
                       "x-ai/grok-code-fast-1",
