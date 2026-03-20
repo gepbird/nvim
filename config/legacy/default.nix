@@ -10,19 +10,6 @@ let
     src = ./.;
     doCheck = false;
   };
-
-  # https://github.com/nvimdev/lspsaga.nvim/pull/1538 but was reverted
-  lspsaga-nvim = pkgs.vimPlugins.lspsaga-nvim.overrideAttrs (o: {
-    patches = (o.patches or [ ]) ++ [
-      (toString (
-        pkgs.fetchpatch2 {
-          name = "deprecation-warning-fix.patch";
-          url = "https://github.com/nvimdev/lspsaga.nvim/commit/ff6b5be0ca32e7b8b34d9415084aa353dc52277f.patch?full_index=1";
-          hash = "sha256-29DMHmvU/s7UQlVX9IsNGIUYESAF1YwI6aFAybKx8U8=";
-        }
-      ))
-    ];
-  });
 in
 {
   extraPlugins = with pkgs.vimPlugins; [
