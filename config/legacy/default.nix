@@ -10,6 +10,19 @@ let
     src = ./.;
     doCheck = false;
   };
+
+  # https://github.com/nvimdev/lspsaga.nvim/pull/1538 but was reverted
+  rainbow-delimiters-nvim = pkgs.vimPlugins.rainbow-delimiters-nvim.overrideAttrs (o: {
+    patches = (o.patches or [ ]) ++ [
+      (toString (
+        pkgs.fetchpatch2 {
+          name = "fix-nil-return-of-get_parser.patch";
+          url = "https://github.com/HiPhish/rainbow-delimiters.nvim/commit/d16a14eed14b0299ef93b6e33daf3cb608ae7595.patch?full_index=1";
+          hash = "sha256-3i1zJui7WU0efeuVAvibToT1ojRehXIMl6uvHZ6gbqQ=";
+        }
+      ))
+    ];
+  });
 in
 {
   extraPlugins = with pkgs.vimPlugins; [
