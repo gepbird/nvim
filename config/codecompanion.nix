@@ -12,7 +12,7 @@
         http = {
           openrouter = lib.nixvim.mkRaw ''
             function()
-              return require("codecompanion.adapters").extend("openai", {
+              return require("codecompanion.adapters").extend("openai_compatible", {
                 name = "openrouter",
                 formatted_name = "OpenRouter",
                 url = "https://openrouter.ai/api/v1/chat/completions",
