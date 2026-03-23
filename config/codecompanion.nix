@@ -46,6 +46,27 @@
               })
             end
           '';
+          llama-cpp = lib.nixvim.mkRaw ''
+            function()
+              return require("codecompanion.adapters").extend("openai", {
+                name = "llama-cpp",
+                formatted_name = "llama.cpp",
+                url = "http://localhost:8080/v1/chat/completions",
+                headers = {
+                  ["HTTP-Referer"] = "https://github.com/olimorris/codecompanion.nvim",
+                  ["X-Title"] = "CodeCompanion",
+                },
+                schema = {
+                  model = {
+                    -- there's only one model loaded into llama-cpp which will be used
+                    -- but codecompanion needs a default model set, otherwise it will send model list requests which will fail
+                    default = "dummy",
+                    choices = { },
+                  },
+                },
+              })
+            end
+          '';
         };
       };
       interactions = {
