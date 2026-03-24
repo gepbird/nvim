@@ -54,7 +54,7 @@
                     -- there's only one model loaded into llama-cpp which will be used
                     -- but codecompanion needs a default model set, otherwise it will send model list requests which will fail
                     default = "dummy",
-                    choices = { },
+                    choices = { "dummy" },
                   },
                 },
                 -- fix tool use by merging system prompts
