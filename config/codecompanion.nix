@@ -16,9 +16,6 @@
                 name = "openrouter",
                 formatted_name = "OpenRouter",
                 url = "https://openrouter.ai/api/v1/chat/completions",
-                opts = {
-                  tools = true,
-                },
                 env = {
                   api_key = "OPENROUTER_API_KEY",
                 },
@@ -52,10 +49,6 @@
                 name = "llama-cpp",
                 formatted_name = "llama.cpp",
                 url = "http://localhost:8080/v1/chat/completions",
-                headers = {
-                  ["HTTP-Referer"] = "https://github.com/olimorris/codecompanion.nvim",
-                  ["X-Title"] = "CodeCompanion",
-                },
                 schema = {
                   model = {
                     -- there's only one model loaded into llama-cpp which will be used
