@@ -25,7 +25,7 @@
                 },
                 schema = {
                   model = {
-                    default = "moonshotai/kimi-k2.5",
+                    default = "minimax/minimax-m2.7",
                     choices = {
                       "google/gemini-3.1-pro-preview",
                       "google/gemini-3.1-flash-lite-preview",
@@ -35,6 +35,7 @@
                       "anthropic/claude-sonnet-4.5",
                       "anthropic/claude-opus-4.5",
                       "minimax/minimax-m2.1",
+                      "minimax/minimax-m2.7",
                       "moonshotai/kimi-k2.5",
                       "z-ai/glm-5",
                     },
