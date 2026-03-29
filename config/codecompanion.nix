@@ -126,7 +126,13 @@
       {
         mode = "n";
         key = "<space>ac";
-        action = cc "toggle()";
+        action = lib.nixvim.mkRaw (wrapLuaFunction ''
+          require('codecompanion').toggle()
+            local approvals = require('codecompanion.interactions.chat.tools.approvals')
+            if not approvals:is_approved(vim.api.nvim_get_current_buf()) then
+              approvals:toggle_yolo_mode()
+            end
+        '');
       }
       {
         mode = "n";
