@@ -106,6 +106,9 @@
       interactions = {
         chat = {
           adapter = "openrouter";
+          tools = {
+            delete_file.opts.require_approval_before = false;
+          };
         };
         inline = {
           adapter = "openrouter";
