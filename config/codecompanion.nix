@@ -7,7 +7,7 @@
   plugins.codecompanion = {
     enable = true;
     settings = {
-      opts.log_level = "INFO";
+      opts.log_level = "DEBUG";
       adapters = {
         http = {
           openrouter = lib.nixvim.mkRaw ''
