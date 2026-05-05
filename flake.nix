@@ -38,7 +38,13 @@
       forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f (forSystem system));
       forSystem = system: rec {
         nixpkgs-patched = nixpkgs-patcher.lib.patchNixpkgs { inherit inputs system; };
-        pkgs = import nixpkgs-patched { inherit system; };
+        pkgs = import nixpkgs-patched {
+          inherit system;
+          config.allowUnfreePackages = [
+            "vim-sandwich"
+            "omnisharp-extended-lsp.nvim"
+          ];
+        };
         nixvimLib = nixvim.lib.${system};
         nixvimPkgs = nixvim.legacyPackages.${system};
         nixvimModule = {
