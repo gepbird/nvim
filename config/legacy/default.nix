@@ -10,6 +10,17 @@ let
     src = ./.;
     doCheck = false;
   };
+
+  # TODO: remove after nneo-tree-nvim is bumped
+  neo-tree-nvim = pkgs.vimPlugins.neo-tree-nvim.overrideAttrs (old: {
+    patches = (old.patches or [ ]) ++ [
+      (pkgs.fetchpatch {
+        name = "fix-buf-modified-set-event-deprecation.diff";
+        url = "https://github.com/nvim-neo-tree/neo-tree.nvim/commit/44dfbc94b0d0820875d6a2ac86026e8dd3b5376e.diff";
+        hash = "sha256-QdWoyvRlB1UX4DK90lw5kimdVg+n3b4uBnY0Q6c+IHI=";
+      })
+    ];
+  });
 in
 {
   extraPlugins = with pkgs.vimPlugins; [
