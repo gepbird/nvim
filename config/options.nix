@@ -30,7 +30,8 @@
     sidescrolloff = 8;
     signcolumn = "yes";
     smartcase = true;
-    smartindent = true;
+    # disabled, because it breaks indenting lines that start with a `#`
+    smartindent = false;
     splitbelow = true;
     splitright = true;
     swapfile = false;
