@@ -79,9 +79,9 @@ require 'gep.utils'.register_maps {
   { 'n',   'gy',           'mfggy<s-g>`f' },
   { 'n',   'gp',           'gg"_d<s-g>P' },
 
-  { 'n',   '<s-y>',        'yy',                                   { unmap = true } },
-  { 'n',   '<s-c>',        'cc',                                   { unmap = true } },
-  { 'n',   '<s-d>',        'dd',                                   { unmap = true } },
+  { 'n',   '<s-y>',        'yy',                                                       { unmap = true } },
+  { 'n',   '<s-c>',        'cc',                                                       { unmap = true } },
+  { 'n',   '<s-d>',        'dd',                                                       { unmap = true } },
 
   { 'n',   '<space>q',     ':q<cr>' },
   { 'n',   '<space><s-q>', ':quitall!<cr>' },
@@ -94,7 +94,7 @@ require 'gep.utils'.register_maps {
   { 'n',   '<a-q>',        'q' },
   { 'n',   '<space><s-r>', ':w<cr>:e<cr>' },
 
-  { 'n',   '<s-u>',        '<c-r>',                                { unmap = true } },
+  { 'n',   '<s-u>',        '<c-r>',                                                    { unmap = true } },
   { 'n',   'z',            'i<cr><esc>' },
   { 'n',   '<s-z>',        '<s-j>' },
   { 'nxi', '<a-f>',        'mfgg=G`f' },
