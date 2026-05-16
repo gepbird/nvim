@@ -13,5 +13,6 @@
     ./repeat.nix
     ./typst-preview.nix
     ./fzf-lua.nix
+    ./autopairs.nix
   ];
 }
