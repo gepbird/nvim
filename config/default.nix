@@ -14,5 +14,6 @@
     ./typst-preview.nix
     ./fzf-lua.nix
     ./autopairs.nix
+    ./autotag.nix
   ];
 }
