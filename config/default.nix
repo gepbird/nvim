@@ -17,7 +17,7 @@
     ./fzf-lua.nix
     ./autopairs.nix
     ./autotag.nix
-    ./treesitter.nix
+    ./treesitter-queries.nix
     ./rainbow-delimiters.nix
   ];
 }
