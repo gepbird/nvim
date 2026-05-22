@@ -5,7 +5,7 @@ require 'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
     disable = function(_, bufnr)
-      return require 'gep.utils'.is_file_big(bufnr)
+      return utils.is_file_big(bufnr)
         or vim.bo.filetype == 'tex'
     end,
     additional_vim_regex_highlighting = false,
@@ -13,7 +13,7 @@ require 'nvim-treesitter.configs'.setup {
   indent = {
     enable = true,
     disable = function(_, bufnr)
-      return require 'gep.utils'.is_file_big(bufnr)
+      return utils.is_file_big(bufnr)
         or vim.bo.filetype == 'html' -- LS dedents body by one, TS doesn't
     end,
   },
@@ -27,7 +27,7 @@ require 'rainbow-delimiters.setup'.setup {
   strategy = {
     html = rainbow.strategy.noop,
     [''] = function(bufnr)
-      local is_too_big = require 'gep.utils'.is_file_big(bufnr)
+      local is_too_big = utils.is_file_big(bufnr)
       if is_too_big then
         return nil
       end

@@ -7,7 +7,6 @@
   plugins.lsp-progress = {
     enable = true;
     settings = {
-
       # don't display the spinner
       client_format = utils.lua ''
         function(client_name, _spinner, series_messages)

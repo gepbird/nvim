@@ -1,5 +1,6 @@
 {
   imports = [
+    ./utils.nix
     ./legacy
     ./options.nix
     ./autocommands.nix
@@ -17,6 +18,5 @@
     ./autopairs.nix
     ./autotag.nix
     ./treesitter.nix
-    ./utils.nix
   ];
 }
