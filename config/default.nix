@@ -16,5 +16,6 @@
     ./autopairs.nix
     ./autotag.nix
     ./treesitter.nix
+    ./utils.nix
   ];
 }

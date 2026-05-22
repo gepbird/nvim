@@ -1,5 +1,5 @@
 {
-  lib,
+  utils,
   ...
 }:
 
@@ -8,25 +8,21 @@
     {
       desc = "Highlight yanked text";
       event = "TextYankPost";
-      callback = lib.nixvim.mkRaw ''
-        function()
-          vim.hl.hl_op {
-            higroup = "IncSearch",
-            timeout = 700,
-          }
-        end
+      callback = utils.luaFunction ''
+        vim.hl.hl_op {
+          higroup = "IncSearch",
+          timeout = 700,
+        }
       '';
     }
     {
       desc = "Don't start a comment when making a newline";
       event = "FileType";
-      callback = lib.nixvim.mkRaw ''
-        function()
-          vim.opt.formatoptions:remove {
-            'r',
-            'o',
-          }
-        end
+      callback = utils.luaFunction ''
+        vim.opt.formatoptions:remove {
+          'r',
+          'o',
+        }
       '';
     }
     {
@@ -38,10 +34,8 @@
       pattern = [
         "*.xaml"
       ];
-      callback = lib.nixvim.mkRaw ''
-        function()
-          vim.bo.filetype = 'xml'
-        end
+      callback = utils.luaFunction ''
+        vim.bo.filetype = 'xml'
       '';
     }
   ];

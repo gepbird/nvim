@@ -1,5 +1,5 @@
 {
-  lib,
+  utils,
   ...
 }:
 
@@ -15,8 +15,7 @@
 
   keymaps =
     let
-      wrapLuaFunction = action: "function() ${action} end";
-      gs = action: lib.nixvim.mkRaw (wrapLuaFunction "require('gitsigns').${action}");
+      gs = action: utils.luaFunction "require('gitsigns').${action}";
     in
     [
       {
