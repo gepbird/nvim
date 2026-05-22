@@ -27,7 +27,6 @@ in
     nvim-web-devicons
 
     lualine-nvim
-    lsp-progress-nvim
     bufferline-nvim
     nvim-window-picker
     neo-tree-nvim

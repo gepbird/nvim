@@ -5,6 +5,7 @@
     ./autocommands.nix
     ./csvview.nix
     ./lsp.nix
+    ./lsp-progress.nix
     ./gitsigns.nix
     ./remember.nix
     ./undotree.nix
