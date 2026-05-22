@@ -60,6 +60,26 @@
         "type": "github"
       }
     },
+    "nfh": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1751018200,
+        "narHash": "sha256-i1sQvHqrNNZbxO8Zv4laBe4MpHwUXluxwk59a41uLVw=",
+        "owner": "name-snrl",
+        "repo": "nfh",
+        "rev": "d5f830fdcd574cebb8bdea7e451da7a5f655e816",
+        "type": "github"
+      },
+      "original": {
+        "owner": "name-snrl",
+        "repo": "nfh",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1778869304,
@@ -121,6 +141,7 @@
       "inputs": {
         "flake-parts": "flake-parts",
         "neovim-nightly": "neovim-nightly",
+        "nfh": "nfh",
         "nixpkgs": "nixpkgs",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
