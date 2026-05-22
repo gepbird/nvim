@@ -10,7 +10,7 @@
       event = "TextYankPost";
       callback = lib.nixvim.mkRaw ''
         function()
-          vim.highlight.on_yank {
+          vim.hl.hl_op {
             higroup = "IncSearch",
             timeout = 700,
           }
