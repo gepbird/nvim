@@ -6,7 +6,6 @@ require 'nvim-treesitter.configs'.setup {
     enable = true,
     disable = function(_, bufnr)
       return utils.is_file_big(bufnr)
-        or vim.bo.filetype == 'tex'
     end,
     additional_vim_regex_highlighting = false,
   },
