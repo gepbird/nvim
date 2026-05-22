@@ -14,7 +14,6 @@ require 'nvim-treesitter.configs'.setup {
     enable = true,
     disable = function(_, bufnr)
       return utils.is_file_big(bufnr)
-        or vim.bo.filetype == 'html' -- LS dedents body by one, TS doesn't
     end,
   },
 }
