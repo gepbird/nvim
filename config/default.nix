@@ -18,5 +18,6 @@
     ./autopairs.nix
     ./autotag.nix
     ./treesitter.nix
+    ./rainbow-delimiters.nix
   ];
 }

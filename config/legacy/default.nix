@@ -41,7 +41,6 @@ in
     nvim-treesitter-legacy.withAllGrammars
     # broken, check after https://github.com/nvim-treesitter/nvim-treesitter-textobjects/issues/772
     #nvim-treesitter-textobjects
-    rainbow-delimiters-nvim
 
     telescope-nvim
     telescope-ui-select-nvim

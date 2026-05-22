@@ -19,18 +19,6 @@ require 'nvim-treesitter.configs'.setup {
   },
 }
 
-vim.api.nvim_set_hl(0, 'RainbowDelimiterYellow', { fg = '#FAD430' })
-vim.api.nvim_set_hl(0, 'RainbowDelimiterPurple', { fg = '#c792ea' })
-vim.api.nvim_set_hl(0, 'RainbowDelimiterBlue', { fg = '#64B5F6' })
-require 'rainbow-delimiters.setup'.setup {
-  highlight = {
-    'RainbowDelimiterYellow',
-    'RainbowDelimiterPurple',
-    'RainbowDelimiterBlue',
-  },
-}
-
-
 -- broken, check after https://github.com/nvim-treesitter/nvim-treesitter-textobjects/issues/772
 --require 'nvim-treesitter.configs'.setup {
 --  textobjects = {
