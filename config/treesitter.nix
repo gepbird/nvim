@@ -51,6 +51,20 @@ let
         (#lua-match? @_key "^extraConfigLua$")
         (#set! injection.language "lua")
         (#set! injection.combined))
+
+      ; match the string after `extraConfigLuaPre =`
+      (binding
+        (attrpath
+          (identifier) @_key)
+        [
+          (indented_string_expression
+            (string_fragment) @injection.content)
+          (string_expression
+            (string_fragment) @injection.content)
+        ]
+        (#lua-match? @_key "^extraConfigLuaPre$")
+        (#set! injection.language "lua")
+        (#set! injection.combined))
     '';
 in
 {
