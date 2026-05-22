@@ -15,5 +15,6 @@
     ./fzf-lua.nix
     ./autopairs.nix
     ./autotag.nix
+    ./treesitter.nix
   ];
 }
