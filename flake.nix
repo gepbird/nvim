@@ -45,8 +45,8 @@
         pkgs = import nixpkgs-patched {
           inherit system;
           config.allowUnfreePackages = [
-            "vim-sandwich"
-            "omnisharp-extended-lsp.nvim"
+            "omnisharp-extended-lsp.nvim" # no license upstream, 99% free
+            "vim-sandwich" # no license upstream, 99% free
           ];
         };
         nixvimLib = nixvim.lib.${system};
