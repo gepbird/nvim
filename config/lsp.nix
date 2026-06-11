@@ -3,6 +3,7 @@
   lsp = {
     servers = {
       cssls.enable = true;
+      tailwindcss.enable = true;
       emmet_language_server.enable = true;
       html.enable = true;
       jsonls.enable = true;
