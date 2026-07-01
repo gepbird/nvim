@@ -1,6 +1,23 @@
 {
+  pkgs,
+  ...
+}:
+
+let
+  package = pkgs.vimPlugins.fzf-lua.overrideAttrs (old: {
+    patches = (old.patches or [ ]) ++ [
+      (pkgs.fetchpatch {
+        name = "fix-live-grep-delay-and-bugs.diff";
+        url = "https://github.com/ibhagwan/fzf-lua/commit/5403b36b2a50495d472596d8f9fbe57554ecc84b.diff";
+        hash = "sha256-uU6xb4nWisTvihBdoGKZK+yAKiVy9thGWVSdXquc2zg=";
+      })
+    ];
+  });
+in
+{
   plugins.fzf-lua = {
     enable = true;
+    inherit package;
     keymaps = {
       "<space><tab>" = "oldfiles";
       "<space>o" = "files";
