@@ -1,35 +1,5 @@
 local telescope = require 'telescope'
-local action_state = require 'telescope.actions.state'
 local actions = require 'telescope.actions'
-local conf = require 'telescope.config'.values
-local finders = require 'telescope.finders'
-local pickers = require 'telescope.pickers'
-
--- TODO: this could be improved a lot, like making previewing work, adding back icons
-local function multi_stage_grep(prompt_bufnr)
-  local picker = action_state.get_current_picker(prompt_bufnr)
-  local manager = picker.manager
-
-  local results = {}
-  for result in manager:iter() do
-    table.insert(results, result)
-  end
-
-  pickers.new({}, {
-    prompt_title = 'Multi Stage Live Grep',
-    finder = finders.new_table {
-      results = results,
-      entry_maker = function(entry)
-        return {
-          value = entry,
-          display = entry[1],
-          ordinal = entry.text,
-        }
-      end,
-    },
-    sorter = conf.generic_sorter {},
-  }):find()
-end
 
 telescope.setup {
   defaults = {
@@ -58,18 +28,7 @@ telescope.setup {
         ['<c-p>'] = actions.cycle_history_prev,
 
         ['<tab>'] = actions.toggle_selection,
-        ['<c-f>'] = multi_stage_grep,
       },
-    },
-    vimgrep_arguments = {
-      'rg',
-      '--hidden',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case',
-      '--color=never',
     },
   },
   extensions = {
@@ -81,29 +40,3 @@ telescope.setup {
 
 telescope.load_extension 'ui-select'
 telescope.load_extension 'fzf'
-
-local builtin = require 'telescope.builtin'
-local glob_pattern = '!.git'
-local find_command = { 'rg', '--files', '--glob=' .. glob_pattern, '--color', 'never' }
-
-require 'gep.utils'.register_maps {
-  { 'n', '<space><space>o', function()
-    builtin.find_files { hidden = true, find_command = find_command }
-  end },
-  { 'n', '<space><space><s-o>', function()
-    builtin.find_files { hidden = true, no_ignore = true, find_command = find_command }
-  end },
-  { 'n', '<space><space><tab>',  builtin.oldfiles },
-  { 'n', '<space><space>tg', function()
-    builtin.live_grep { glob_pattern = glob_pattern }
-  end },
-  { 'n', '<space><space>t<s-g>', function()
-    builtin.live_grep { additional_args = { '--no-ignore' } }
-  end },
-  { 'n', '<space><space>tb',     builtin.buffers },
-  { 'n', '<space><space>tm',     builtin.keymaps },
-  { 'n', '<space><space>tc',     builtin.commands },
-  { 'n', '<space><space>th',     builtin.help_tags },
-  { 'n', '<space><space>t<s-h>', builtin.highlights },
-  { 'n', '<space><space>tr',     builtin.registers },
-}
