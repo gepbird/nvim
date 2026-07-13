@@ -21,10 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
-    nfh = {
-      url = "github:name-snrl/nfh";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    import-tree.url = "github:denful/import-tree";
     # dependencies of the above modules
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -56,7 +53,7 @@
         nixvimLib = nixvim.lib.${system};
         nixvimPkgs = nixvim.legacyPackages.${system};
         nixvimModule = {
-          module = (nfh ./config) { };
+          module = import-tree ./config;
           extraSpecialArgs = inputs;
         };
         nvimWithOwnPkgs =

@@ -20,6 +20,21 @@
         "type": "github"
       }
     },
+    "import-tree": {
+      "locked": {
+        "lastModified": 1778781969,
+        "narHash": "sha256-Jjuz5CmSkur8KvLDoGa+vylEp+RkQtv4mt/qcMznpH0=",
+        "owner": "denful",
+        "repo": "import-tree",
+        "rev": "d321337efd0f23a9eb14a42adb7b2c29313ab274",
+        "type": "github"
+      },
+      "original": {
+        "owner": "denful",
+        "repo": "import-tree",
+        "type": "github"
+      }
+    },
     "neovim-nightly": {
       "inputs": {
         "flake-parts": [
@@ -60,26 +75,6 @@
         "type": "github"
       }
     },
-    "nfh": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1783271816,
-        "narHash": "sha256-j5orFiQfYzST3QtruFi0+McFXE3AUNEOMGE2hrxnJmI=",
-        "owner": "name-snrl",
-        "repo": "nfh",
-        "rev": "20415ed5e918c07bf0289e38e721dec7f5c09378",
-        "type": "github"
-      },
-      "original": {
-        "owner": "name-snrl",
-        "repo": "nfh",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1783776592,
@@ -99,7 +94,7 @@
     "nixpkgs-patch-stylelint-lsp-fix-build": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-KNinQgrVU3T3tmWW2+Y75U9ZIMLlisYB7UjyjMEZ5KA=",
+        "narHash": "sha256-zvRZ6qDExoyDRGnKLIMD2XsvhZFo+BS4VKgnJ1f3zYI=",
         "type": "file",
         "url": "https://github.com/NixOS/nixpkgs/pull/536260.diff"
       },
@@ -136,11 +131,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1783941741,
-        "narHash": "sha256-F+3M1IZrJa920cx2/k2AMKqedEodxLF7COJVkLJwUBo=",
+        "lastModified": 1783980039,
+        "narHash": "sha256-QjM3pLJraSzvUlEwz1Jcl25Hpwe7JKZA6tQJ6DAEUMw=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "e6715f01d9f56f07a27a01386b85ae22b06f0705",
+        "rev": "7a7643e253afd119d69c8e8bb2a3385c346f3a40",
         "type": "github"
       },
       "original": {
@@ -152,8 +147,8 @@
     "root": {
       "inputs": {
         "flake-parts": "flake-parts",
+        "import-tree": "import-tree",
         "neovim-nightly": "neovim-nightly",
-        "nfh": "nfh",
         "nixpkgs": "nixpkgs",
         "nixpkgs-patch-stylelint-lsp-fix-build": "nixpkgs-patch-stylelint-lsp-fix-build",
         "nixpkgs-patcher": "nixpkgs-patcher",
