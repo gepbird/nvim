@@ -1,5 +1,4 @@
 {
-  neovim-nightly,
   pkgs,
   ...
 }:
@@ -62,7 +61,6 @@ in
   ];
 
   extraConfigLua = "require 'gep'";
-  package = neovim-nightly.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
   # TODO: unused
   nixpkgs.overlays = [
