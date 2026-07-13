@@ -40,14 +40,6 @@
     undofile = true;
     winborder = "rounded";
 
-    # TODO: report to upstreams, add a better fix
-    # typing "(" will insert ")" as expected by nvim-autopairs
-    # pressing "<cr>" will put the cursor on a new line AFTER the ")"
-    # since https://github.com/neovim/neovim/pull/39961
-    # same workaround as https://github.com/nvim-mini/mini.nvim/pull/2428
-    # workaround is not the best, because ")" will be incorrectly indented
-    autoindent = false;
-
     # this breaks indentation for example here:
     /*
       ```nix
