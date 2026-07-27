@@ -75,6 +75,7 @@
         nixvimModule = {
           module = import-tree ./config;
           extraSpecialArgs = inputs;
+          inherit pkgs;
         };
       in
       {
