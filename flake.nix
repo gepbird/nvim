@@ -22,13 +22,13 @@
       inputs.flake-parts.follows = "flake-parts";
     };
     import-tree.url = "github:denful/import-tree";
+    systems = {
+      url = "github:nix-systems/default-linux";
+    };
     # dependencies of the above modules
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
-    systems = {
-      url = "github:nix-systems/default";
     };
   };
 
@@ -36,10 +36,7 @@
     inputs:
     with inputs;
     let
-      supportedSystems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
+      supportedSystems = import systems;
       forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f (forSystem system));
       forSystem = system: rec {
         nixpkgs-patched = nixpkgs-patcher.lib.patchNixpkgs { inherit inputs system; };
