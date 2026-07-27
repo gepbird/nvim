@@ -47,7 +47,12 @@
       };
 
       perSystem =
-        { pkgs, system, ... }:
+        {
+          pkgs,
+          self',
+          system,
+          ...
+        }:
         {
           _module.args =
             let
@@ -70,7 +75,7 @@
               ];
               extraSpecialArgs = inputs;
             };
-            dev = self.nixvimConfigurations.${system}.default.extendModules {
+            dev = self'.nixvimConfigurations.default.extendModules {
               modules = [
                 {
                   enableMan = false;
