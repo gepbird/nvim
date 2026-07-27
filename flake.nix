@@ -50,17 +50,6 @@
         { pkgs, system, ... }:
         let
           nixpkgs-patched = nixpkgs-patcher.lib.patchNixpkgs { inherit inputs system; };
-          makeConfiguration =
-            extraModule:
-            nixvim.lib.evalNixvim {
-              inherit system;
-              modules = [
-                self.nixvimModules.default
-                { nixpkgs.pkgs = nixpkgs.lib.mkDefault pkgs; }
-                extraModule
-              ];
-              extraSpecialArgs = inputs;
-            };
         in
         {
           _module.args = import nixpkgs-patched {
@@ -72,10 +61,21 @@
           };
 
           nixvimConfigurations = {
-            default = makeConfiguration { };
-            dev = makeConfiguration {
-              enableMan = false;
-              enablePrintInit = false;
+            default = nixvim.lib.evalNixvim {
+              inherit system;
+              modules = [
+                self.nixvimModules.default
+                { nixpkgs.pkgs = nixpkgs.lib.mkDefault pkgs; }
+              ];
+              extraSpecialArgs = inputs;
+            };
+            dev = self.nixvimConfigurations.${system}.default.extendModules {
+              modules = [
+                {
+                  enableMan = false;
+                  enablePrintInit = false;
+                }
+              ];
             };
           };
 
