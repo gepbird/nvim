@@ -88,6 +88,14 @@
           ];
         };
 
+        packages = {
+          default = nixvimPkgs.makeNixvimWithModule nixvimModule;
+          dev = self.packages.${system}.default.extend {
+            enableMan = false;
+            enablePrintInit = false;
+          };
+        };
+
         legacyPackages.nvimWithOwnPkgs =
           pkgs: nixvimPkgs.makeNixvimWithModule (nixvimModule // { inherit pkgs; });
 
@@ -102,14 +110,6 @@
 
     flake = {
       inherit inputs;
-
-      packages = forAllSystems (
-        { nvim, devNvim, ... }:
-        {
-          default = nvim;
-          dev = devNvim;
-        }
-      );
 
       overlays.default = final: prev: {
         nvim-gep = self.legacyPackages.${prev.stdenv.system}.nvimWithOwnPkgs prev;
