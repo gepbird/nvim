@@ -34,58 +34,58 @@
   outputs =
     inputs:
     with inputs;
-  flake-parts.lib.mkFlake { inherit inputs; } {
-    systems = import systems;
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = import systems;
 
-    perSystem =
-      { pkgs, system, ... }:
-      let
-        nixpkgs-patched = nixpkgs-patcher.lib.patchNixpkgs { inherit inputs system; };
-        nixvimLib = nixvim.lib.${system};
-        nixvimPkgs = nixvim.legacyPackages.${system};
-        nixvimModule = {
-          module = import-tree ./config;
-          extraSpecialArgs = inputs;
-          inherit pkgs;
-        };
-      in
-      {
-        _module.args = import nixpkgs-patched {
-          inherit system;
-          config.allowUnfreePackages = [
-            "omnisharp-extended-lsp.nvim" # no license upstream, 99% free
-            "vim-sandwich" # no license upstream, 99% free
-          ];
-        };
-
-        packages = {
-          default = nixvimPkgs.makeNixvimWithModule nixvimModule;
-          dev = self.packages.${system}.default.extend {
-            enableMan = false;
-            enablePrintInit = false;
+      perSystem =
+        { pkgs, system, ... }:
+        let
+          nixpkgs-patched = nixpkgs-patcher.lib.patchNixpkgs { inherit inputs system; };
+          nixvimLib = nixvim.lib.${system};
+          nixvimPkgs = nixvim.legacyPackages.${system};
+          nixvimModule = {
+            module = import-tree ./config;
+            extraSpecialArgs = inputs;
+            inherit pkgs;
           };
+        in
+        {
+          _module.args = import nixpkgs-patched {
+            inherit system;
+            config.allowUnfreePackages = [
+              "omnisharp-extended-lsp.nvim" # no license upstream, 99% free
+              "vim-sandwich" # no license upstream, 99% free
+            ];
+          };
+
+          packages = {
+            default = nixvimPkgs.makeNixvimWithModule nixvimModule;
+            dev = self.packages.${system}.default.extend {
+              enableMan = false;
+              enablePrintInit = false;
+            };
+          };
+
+          legacyPackages.nvimWithOwnPkgs =
+            pkgs: nixvimPkgs.makeNixvimWithModule (nixvimModule // { inherit pkgs; });
+
+          devShells.default = pkgs.mkShell {
+            packages = with pkgs; [
+              inotify-tools
+            ];
+          };
+
+          checks.default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
         };
 
-        legacyPackages.nvimWithOwnPkgs =
-          pkgs: nixvimPkgs.makeNixvimWithModule (nixvimModule // { inherit pkgs; });
+      flake = {
+        inherit inputs;
 
-        devShells.default = pkgs.mkShell {
-          packages = with pkgs; [
-            inotify-tools
-          ];
+        overlays.default = final: prev: {
+          nvim-gep = self.legacyPackages.${prev.stdenv.system}.nvimWithOwnPkgs prev;
         };
-
-        checks.default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
-      };
-
-    flake = {
-      inherit inputs;
-
-      overlays.default = final: prev: {
-        nvim-gep = self.legacyPackages.${prev.stdenv.system}.nvimWithOwnPkgs prev;
       };
     };
-  };
 
   nixConfig = {
     extra-substituters = [
