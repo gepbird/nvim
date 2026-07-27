@@ -45,7 +45,8 @@
             extraModule:
             nixvim.lib.evalNixvim {
               inherit system;
-              modules = (import-tree.leafs ./config) ++ [
+              modules = [
+                self.nixvimModules.default
                 { nixpkgs.pkgs = nixpkgs.lib.mkDefault pkgs; }
                 extraModule
               ];
@@ -83,6 +84,8 @@
 
       flake = {
         inherit inputs;
+
+        nixvimModules.default = import-tree ./config;
 
         overlays.default = final: prev: {
           nvim-gep = self.legacyPackages.${prev.stdenv.system}.nvimWithOwnPkgs prev;
