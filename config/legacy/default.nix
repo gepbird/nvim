@@ -60,6 +60,10 @@ in
     gepPlugin
   ];
 
+  extraPackages = with pkgs; [
+    prettierd
+  ];
+
   extraConfigLua = "require 'gep'";
 
   # TODO: unused
