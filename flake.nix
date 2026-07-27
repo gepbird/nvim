@@ -6,10 +6,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
-    nixpkgs-patch-stylelint-lsp-fix-build = {
-      url = "https://github.com/NixOS/nixpkgs/pull/530554.diff";
-      flake = false;
-    };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
