@@ -68,10 +68,19 @@
     systems = import systems;
 
     perSystem =
-      { pkgs, ... }:
+      { pkgs, system, ... }:
       let
+        nixpkgs-patched = nixpkgs-patcher.lib.patchNixpkgs { inherit inputs system; };
       in
       {
+        _module.args = import nixpkgs-patched {
+          inherit system;
+          config.allowUnfreePackages = [
+            "omnisharp-extended-lsp.nvim" # no license upstream, 99% free
+            "vim-sandwich" # no license upstream, 99% free
+          ];
+        };
+
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             inotify-tools
