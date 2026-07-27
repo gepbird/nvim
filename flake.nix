@@ -71,6 +71,11 @@
       { pkgs, system, ... }:
       let
         nixpkgs-patched = nixpkgs-patcher.lib.patchNixpkgs { inherit inputs system; };
+        nixvimLib = nixvim.lib.${system};
+        nixvimModule = {
+          module = import-tree ./config;
+          extraSpecialArgs = inputs;
+        };
       in
       {
         _module.args = import nixpkgs-patched {
@@ -86,16 +91,12 @@
             inotify-tools
           ];
         };
+
+        checks.default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
       };
 
     flake = {
       inherit inputs;
-      checks = forAllSystems (
-        { nixvimLib, nixvimModule, ... }:
-        {
-          default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
-        }
-      );
 
       packages = forAllSystems (
         { nvim, devNvim, ... }:
