@@ -62,14 +62,23 @@
           enableMan = false;
           enablePrintInit = false;
         };
-        devShell = pkgs.mkShell {
+      };
+    in
+  flake-parts.lib.mkFlake { inherit inputs; } {
+    systems = import systems;
+
+    perSystem =
+      { pkgs, ... }:
+      let
+      in
+      {
+        devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             inotify-tools
           ];
         };
       };
-    in
-  flake-parts.lib.mkFlake { inherit inputs; } {
+
     flake = {
       inherit inputs;
       checks = forAllSystems (
@@ -90,13 +99,6 @@
       overlays.default = final: prev: {
         nvim-gep = (forSystem prev.stdenv.hostPlatform.system).nvimWithOwnPkgs prev;
       };
-
-      devShells = forAllSystems (
-        { devShell, ... }:
-        {
-          default = devShell;
-        }
-      );
     };
   };
 
