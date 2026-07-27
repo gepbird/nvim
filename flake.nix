@@ -41,13 +41,17 @@
         { pkgs, system, ... }:
         let
           nixpkgs-patched = nixpkgs-patcher.lib.patchNixpkgs { inherit inputs system; };
-          nixvimLib = nixvim.lib.${system};
-          nixvimPkgs = nixvim.legacyPackages.${system};
-          nixvimModule = {
-            module = import-tree ./config;
-            extraSpecialArgs = inputs;
-            inherit pkgs;
-          };
+          makeConfiguration =
+            extraModule:
+            nixvim.lib.evalNixvim {
+              inherit system;
+              modules = (import-tree.leafs ./config) ++ [
+                { nixpkgs.pkgs = nixpkgs.lib.mkDefault pkgs; }
+                extraModule
+              ];
+              extraSpecialArgs = inputs;
+            };
+          makeNixvim = extraModules: (makeConfiguration extraModules).config.build.package;
         in
         {
           _module.args = import nixpkgs-patched {
@@ -59,15 +63,14 @@
           };
 
           packages = {
-            default = nixvimPkgs.makeNixvimWithModule nixvimModule;
-            dev = self.packages.${system}.default.extend {
+            default = makeNixvim { };
+            dev = makeNixvim {
               enableMan = false;
               enablePrintInit = false;
             };
           };
 
-          legacyPackages.nvimWithOwnPkgs =
-            pkgs: nixvimPkgs.makeNixvimWithModule (nixvimModule // { inherit pkgs; });
+          legacyPackages.nvimWithOwnPkgs = pkgs: makeNixvim { nixpkgs = { inherit pkgs; }; };
 
           devShells.default = pkgs.mkShell {
             packages = with pkgs; [
@@ -75,7 +78,7 @@
             ];
           };
 
-          checks.default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
+          checks.default = (makeConfiguration { }).config.build.test;
         };
 
       flake = {
