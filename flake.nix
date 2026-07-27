@@ -34,36 +34,6 @@
   outputs =
     inputs:
     with inputs;
-    let
-      supportedSystems = import systems;
-      forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f (forSystem system));
-      forSystem = system: rec {
-        nixpkgs-patched = nixpkgs-patcher.lib.patchNixpkgs { inherit inputs system; };
-        pkgs = import nixpkgs-patched {
-          inherit system;
-          config.allowUnfreePackages = [
-            "omnisharp-extended-lsp.nvim" # no license upstream, 99% free
-            "vim-sandwich" # no license upstream, 99% free
-          ];
-        };
-        nixvimLib = nixvim.lib.${system};
-        nixvimPkgs = nixvim.legacyPackages.${system};
-        nixvimModule = {
-          module = import-tree ./config;
-          extraSpecialArgs = inputs;
-        };
-        nvimWithOwnPkgs =
-          pkgs:
-          (nixvimPkgs.makeNixvimWithModule nixvimModule).extend {
-            nixpkgs.pkgs = pkgs;
-          };
-        nvim = nvimWithOwnPkgs pkgs;
-        devNvim = nvim.extend {
-          enableMan = false;
-          enablePrintInit = false;
-        };
-      };
-    in
   flake-parts.lib.mkFlake { inherit inputs; } {
     systems = import systems;
 
