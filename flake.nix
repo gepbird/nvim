@@ -72,6 +72,7 @@
       let
         nixpkgs-patched = nixpkgs-patcher.lib.patchNixpkgs { inherit inputs system; };
         nixvimLib = nixvim.lib.${system};
+        nixvimPkgs = nixvim.legacyPackages.${system};
         nixvimModule = {
           module = import-tree ./config;
           extraSpecialArgs = inputs;
@@ -86,6 +87,9 @@
             "vim-sandwich" # no license upstream, 99% free
           ];
         };
+
+        legacyPackages.nvimWithOwnPkgs =
+          pkgs: nixvimPkgs.makeNixvimWithModule (nixvimModule // { inherit pkgs; });
 
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
@@ -108,7 +112,7 @@
       );
 
       overlays.default = final: prev: {
-        nvim-gep = (forSystem prev.stdenv.hostPlatform.system).nvimWithOwnPkgs prev;
+        nvim-gep = self.legacyPackages.${prev.stdenv.system}.nvimWithOwnPkgs prev;
       };
     };
   };
