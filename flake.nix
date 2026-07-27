@@ -37,6 +37,15 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = import systems;
 
+      imports = [
+        nixvim.flakeModules.default
+      ];
+
+      nixvim = {
+        packages.enable = true;
+        checks.enable = true;
+      };
+
       perSystem =
         { pkgs, system, ... }:
         let
@@ -52,7 +61,6 @@
               ];
               extraSpecialArgs = inputs;
             };
-          makeNixvim = extraModules: (makeConfiguration extraModules).config.build.package;
         in
         {
           _module.args = import nixpkgs-patched {
@@ -63,23 +71,25 @@
             ];
           };
 
-          packages = {
-            default = makeNixvim { };
-            dev = makeNixvim {
+          nixvimConfigurations = {
+            default = makeConfiguration { };
+            dev = makeConfiguration {
               enableMan = false;
               enablePrintInit = false;
             };
           };
 
-          legacyPackages.nvimWithOwnPkgs = pkgs: makeNixvim { nixpkgs = { inherit pkgs; }; };
+          legacyPackages.nvimWithOwnPkgs =
+            pkgs:
+            (makeConfiguration {
+              nixpkgs = { inherit pkgs; };
+            }).config.build.package;
 
           devShells.default = pkgs.mkShell {
             packages = with pkgs; [
               inotify-tools
             ];
           };
-
-          checks.default = (makeConfiguration { }).config.build.test;
         };
 
       flake = {
