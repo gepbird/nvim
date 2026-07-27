@@ -79,12 +79,6 @@
             };
           };
 
-          legacyPackages.nvimWithOwnPkgs =
-            pkgs:
-            (makeConfiguration {
-              nixpkgs = { inherit pkgs; };
-            }).config.build.package;
-
           devShells.default = pkgs.mkShell {
             packages = with pkgs; [
               inotify-tools
@@ -98,7 +92,10 @@
         nixvimModules.default = import-tree ./config;
 
         overlays.default = final: prev: {
-          nvim-gep = self.legacyPackages.${prev.stdenv.system}.nvimWithOwnPkgs prev;
+          nvim-gep =
+            (self.nixvimConfigurations.${prev.stdenv.system}.default.extendModules {
+              modules = [ { nixpkgs.pkgs = prev; } ];
+            }).config.build.package;
         };
       };
     };
