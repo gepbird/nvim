@@ -62,6 +62,7 @@ in
 
   extraPackages = with pkgs; [
     prettierd
+    netcoredbg
   ];
 
   extraConfigLua = "require 'gep'";
