@@ -19,7 +19,7 @@
     };
     import-tree.url = "github:denful/import-tree";
     systems = {
-      url = "github:nix-systems/default-linux";
+      url = "github:nix-systems/default";
     };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
