@@ -1,4 +1,9 @@
 {
+  utils,
+  ...
+}:
+
+{
   plugins.fzf-lua = {
     enable = true;
     keymaps = {
@@ -22,6 +27,16 @@
     settings = {
       winopts = {
         fullscreen = true;
+      };
+      git = {
+        commits = {
+          actions = {
+            "ctrl-d" = false;
+            "alt-d" = utils.lua ''
+              vim.deepcopy(require("fzf-lua.defaults").defaults.git.commits.actions["ctrl-d"])
+            '';
+          };
+        };
       };
       keymap = {
         fzf = {
