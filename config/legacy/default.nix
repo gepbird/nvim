@@ -9,6 +9,15 @@ let
     src = ./.;
     doCheck = false;
   };
+  bufferline-nvim = pkgs.vimPlugins.bufferline-nvim.overrideAttrs (o: {
+    patches = (o.patches or [ ]) ++ [
+      (pkgs.fetchpatch {
+        name = "fix-deprecation.patch";
+        url = "https://github.com/akinsho/bufferline.nvim/pull/1051.patch";
+        hash = "sha256-p4gSfaY+ZU1NmKqnxJAxjv9oHc+zMy0Z2yX1q6oDO1s=";
+      })
+    ];
+  });
 in
 {
   extraPlugins = with pkgs.vimPlugins; [
