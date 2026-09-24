@@ -18,6 +18,15 @@ let
       })
     ];
   });
+  toggleterm-nvim = pkgs.vimPlugins.toggleterm-nvim.overrideAttrs (o: {
+    patches = (o.patches or [ ]) ++ [
+      (pkgs.fetchpatch {
+        name = "fix-deprecation.patch";
+        url = "https://github.com/akinsho/toggleterm.nvim/pull/673.patch";
+        hash = "sha256-h1zNxRFhayr7634STYUV7e1PpPz85lwJNAdVIIt6Pvo=";
+      })
+    ];
+  });
 in
 {
   extraPlugins = with pkgs.vimPlugins; [
