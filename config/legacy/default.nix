@@ -9,6 +9,15 @@ let
     src = ./.;
     doCheck = false;
   };
+  nvim-web-devicons = pkgs.vimPlugins.nvim-web-devicons.overrideAttrs (o: {
+    patches = (o.patches or [ ]) ++ [
+      (pkgs.fetchpatch {
+        name = "fix-deprecation.patch";
+        url = "https://github.com/nvim-tree/nvim-web-devicons/pull/641.patch";
+        hash = "sha256-MdGQFt2oZyxDnKrlBfe4zRyJrVs0rAXbFhRtvRM6oEg=";
+      })
+    ];
+  });
   bufferline-nvim = pkgs.vimPlugins.bufferline-nvim.overrideAttrs (o: {
     patches = (o.patches or [ ]) ++ [
       (pkgs.fetchpatch {
