@@ -20,6 +20,7 @@
       };
       nil_ls = {
         enable = true;
+        package = pkgs.lixPackageSet.nil or pkgs.lixPackageSets.lix_2_96.nil;
         config.settings.nil = {
           nix.flake.autoArchive = true;
         };
